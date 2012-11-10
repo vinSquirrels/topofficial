@@ -5,13 +5,29 @@ class OfficialController extends Controller {
         $official = Official::model()->findByPk( $id );
         $criteriaEstimates = $official->getCriteriaEstimates();
         $rankValue = $official->getRank();
-        print_r( $rankValue );die;
-        $this->render( 
+        $newReview = new Review();
+
+        $this->render(
             'view', 
             array(
                 'official' => $official,
+                'reviews' => $official->reviews,
                 'criteriaEstimates' => $criteriaEstimates,
-                'rankValue' => $rankValue
+                'rankValue' => $rankValue,
+                'newReview' => $newReview
+            )
+        );
+    }
+    
+    
+    public function actionList() {
+        $filter = array();
+        $officials = Official::model()->getList( $filter );
+        
+        $this->render( 
+            'list',
+            array(
+                'officials' => $officials
             )
         );
     }

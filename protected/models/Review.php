@@ -1,23 +1,22 @@
 <?php
 
 /**
- * This is the model class for table "estimate".
+ * This is the model class for table "review".
  *
- * The followings are the available columns in table 'estimate':
- * @property integer $EstimateID
- * @property integer $Value
- * @property integer $CriteriaTypeID
+ * The followings are the available columns in table 'review':
  * @property integer $ReviewID
- *
- * The followings are the available model relations:
- * @property Criteriatype $criteriaType
+ * @property string $IpAddress
+ * @property string $Timestamp
+ * @property integer $OfficialID
+ * @property string $AuthorName
+ * @property string $AuthorEmail
  */
-class Estimate extends CActiveRecord
+class Review extends CActiveRecord
 {
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
-	 * @return Estimate the static model class
+	 * @return Review the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
@@ -29,7 +28,7 @@ class Estimate extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'estimate';
+		return 'review';
 	}
 
 	/**
@@ -40,11 +39,12 @@ class Estimate extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('Value, CriteriaTypeID, ReviewID', 'required'),
-			array('Value, CriteriaTypeID, ReviewID', 'numerical', 'integerOnly'=>true),
+			array('IpAddress, Timestamp, OfficialID', 'required'),
+			array('OfficialID', 'numerical', 'integerOnly'=>true),
+			array('IpAddress, AuthorName, AuthorEmail', 'length', 'max'=>45),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('EstimateID, Value, CriteriaTypeID, ReviewID', 'safe', 'on'=>'search'),
+			array('ReviewID, IpAddress, Timestamp, OfficialID, AuthorName, AuthorEmail', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -56,7 +56,6 @@ class Estimate extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'criteriaType' => array(self::BELONGS_TO, 'Criteriatype', 'CriteriaTypeID'),
 		);
 	}
 
@@ -66,10 +65,12 @@ class Estimate extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'EstimateID' => 'Estimate',
-			'Value' => 'Value',
-			'CriteriaTypeID' => 'Criteria Type',
 			'ReviewID' => 'Review',
+			'IpAddress' => 'Ip Address',
+			'Timestamp' => 'Timestamp',
+			'OfficialID' => 'Official',
+			'AuthorName' => 'Author Name',
+			'AuthorEmail' => 'Author Email',
 		);
 	}
 
@@ -84,10 +85,12 @@ class Estimate extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('EstimateID',$this->EstimateID);
-		$criteria->compare('Value',$this->Value);
-		$criteria->compare('CriteriaTypeID',$this->CriteriaTypeID);
 		$criteria->compare('ReviewID',$this->ReviewID);
+		$criteria->compare('IpAddress',$this->IpAddress,true);
+		$criteria->compare('Timestamp',$this->Timestamp,true);
+		$criteria->compare('OfficialID',$this->OfficialID);
+		$criteria->compare('AuthorName',$this->AuthorName,true);
+		$criteria->compare('AuthorEmail',$this->AuthorEmail,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
