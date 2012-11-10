@@ -5,7 +5,7 @@ class OfficialController extends Controller {
         $official = Official::model()->findByPk( $id );
         $criteriaEstimates = $official->getCriteriaEstimates();
         $rankValue = $official->getRank();
-        print_r( $rankValue );die;
+        
         $this->render( 
             'view', 
             array(

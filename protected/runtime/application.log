@@ -110,3 +110,71 @@ REQUEST_URI=/topofficial/index.php/official/view/id/1
 in C:\xampp\htdocs\topofficial\protected\models\Official.php (182)
 in C:\xampp\htdocs\topofficial\protected\controllers\OfficialController.php (7)
 in C:\xampp\htdocs\topofficial\index.php (13)
+2012/11/10 13:05:14 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[42000] [1049] Unknown database 'topofficial'' in C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\db\CDbConnection.php:382
+Stack trace:
+#0 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\db\CDbConnection.php(331): CDbConnection->open()
+#1 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\db\CDbConnection.php(309): CDbConnection->setActive(true)
+#2 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\base\CModule.php(388): CDbConnection->init()
+#3 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\base\CApplication.php(431): CModule->getComponent('db')
+#4 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\db\ar\CActiveRecord.php(624): CApplication->getDb()
+#5 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\db\ar\CActiveRecord.php(2311): CActiveRecord->getDbConnection()
+#6 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\db\ar\CActiveRecord.php(388): CActiveRecordMetaData->__construct(Object(Official))
+#7 C:\xampp\htdocs\topofficial\protected\models\Official.php(33): CActiveRecord::model('Official')
+#8 C:\xampp\htdocs\topofficial\protected\controllers\OfficialController.php(5): Official::model()
+#9 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\web\actions\CInlineAction.php(50): OfficialController->actionView()
+#10 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#11 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#12 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\web\CWebApplication.php(283): CController->run('view')
+#14 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\web\CWebApplication.php(142): CWebApplication->runController('official/view/i...')
+#15 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#16 C:\xampp\htdocs\topofficial\index.php(13): CApplication->run()
+#17 {main}
+REQUEST_URI=/topofficial/index.php/official/view/id/1
+---
+2012/11/10 13:51:25 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'estimate.OfficialID' in 'where clause'. The SQL statement executed was: 
+            SELECT 
+                estimate.CriteriaTypeID,
+                    sum( estimate.Value ) / count(*) as Value,
+                    topofficial.criteriatype.Name
+            FROM
+                topofficial.estimate
+            LEFT JOIN
+                    topofficial.criteriatype ON criteriatype.CriteriaTypeID = estimate.CriteriaTypeID
+            WHERE
+                estimate.OfficialID = :officialID
+            GROUP BY
+                estimate.CriteriaTypeID, topofficial.criteriatype.Name
+        .
+in C:\xampp\htdocs\topofficial\protected\models\Official.php (151)
+in C:\xampp\htdocs\topofficial\protected\controllers\OfficialController.php (6)
+in C:\xampp\htdocs\topofficial\index.php (13)
+2012/11/10 13:51:26 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'estimate.OfficialID' in 'where clause'. The SQL statement executed was: 
+            SELECT 
+                estimate.CriteriaTypeID,
+                    sum( estimate.Value ) / count(*) as Value,
+                    topofficial.criteriatype.Name
+            FROM
+                topofficial.estimate
+            LEFT JOIN
+                    topofficial.criteriatype ON criteriatype.CriteriaTypeID = estimate.CriteriaTypeID
+            WHERE
+                estimate.OfficialID = :officialID
+            GROUP BY
+                estimate.CriteriaTypeID, topofficial.criteriatype.Name
+        ' in C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\db\CDbCommand.php:528
+Stack trace:
+#0 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\db\CDbCommand.php(390): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\xampp\htdocs\topofficial\protected\models\Official.php(151): CDbCommand->queryAll(true, Array)
+#2 C:\xampp\htdocs\topofficial\protected\controllers\OfficialController.php(6): Official->getCriteriaEstimates()
+#3 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\web\actions\CInlineAction.php(50): OfficialController->actionView()
+#4 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\web\CWebApplication.php(283): CController->run('view')
+#8 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\web\CWebApplication.php(142): CWebApplication->runController('official/view/i...')
+#9 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\topofficial\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/topofficial/index.php/official/view/id/1
+---

@@ -5,8 +5,14 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="language" content="en" />
 
-	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/main.css" />
-	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/form.css" />
+<!--	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/main.css" />-->
+<!--	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/form.css" />-->
+        <link rel="stylesheet" type="text/css" media="screen" href="<?php echo Yii::app()->request->baseUrl; ?>/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+        <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/official-style.css" />
+        
+        <?php Yii::app()->clientScript->registerScriptFile( Yii::app()->request->baseUrl . '/js/lib/jquery.js', CClientScript::POS_END ) ?>
+        <?php Yii::app()->clientScript->registerScriptFile( Yii::app()->request->baseUrl . '/bootstrap/js/bootstrap.min.js', CClientScript::POS_END ) ?>
+        <?php Yii::app()->clientScript->registerScriptFile( Yii::app()->request->baseUrl . '/js/main.js', CClientScript::POS_END ) ?>
 
 	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
 </head>
@@ -14,36 +20,26 @@
 <body>
 
 <div class="container" id="page">
-	<div id="header">
-		<div id="logo"><?php echo CHtml::encode(Yii::app()->name); ?></div>
-	</div><!-- header -->
-
-	<div id="mainmenu">
-		<?php $this->widget('zii.widgets.CMenu',array(
-			'items'=>array(
-				array('label'=>'Home', 'url'=>array('/site/index')),
-				array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
-				array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest)
-			),
-		)); ?>
-	</div>
-        <!-- mainmenu -->
-	<?php if(isset($this->breadcrumbs)):?>
-		<?php $this->widget('zii.widgets.CBreadcrumbs', array(
-			'links'=>$this->breadcrumbs,
-		)); ?><!-- breadcrumbs -->
-	<?php endif?>
+    <div id="official-wrap">
+      <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-inner">
+          <div class="container">
+             <a class="brand" href="#">Топ чиновник</a>       
+          </div>
+        </div>
+      </div>
 
 	<?php echo $content; ?>
 
 	<div class="clear"></div>
 
-	<div id="footer">
-		Copyright &copy;&nbsp; <?php echo date('Y'); echo Yii::t( 'application', 'VinSquirrels for OpenIdeas4UA' ); ?>  <br/>
-		<?php echo Yii::powered(); ?>
+	<div class="official-footer">
+            <hr />
+            Copyright &copy;&nbsp; <?php echo date('Y'); echo Yii::t( 'application', 'VinSquirrels for OpenIdeas4UA' ); ?>  <br/>
+            <?php echo Yii::powered(); ?>
 	</div><!-- footer -->
 
-</div><!-- page -->
+    </div><!-- page -->
 
 </body>
 </html>
