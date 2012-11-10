@@ -1,0 +1,52 @@
+2012/11/09 23:33:07 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "page".' in C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\web\CController.php:484
+Stack trace:
+#0 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\web\CController.php(271): CController->missingAction('page')
+#1 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\web\CWebApplication.php(283): CController->run('page')
+#2 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\web\CWebApplication.php(142): CWebApplication->runController('site/page')
+#3 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\topofficial\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/topofficial/index.php?r=site/page&view=about
+HTTP_REFERER=http://localhost/topofficial/index.php?r=site/index
+---
+2012/11/09 23:33:08 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "page".' in C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\web\CController.php:484
+Stack trace:
+#0 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\web\CController.php(271): CController->missingAction('page')
+#1 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\web\CWebApplication.php(283): CController->run('page')
+#2 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\web\CWebApplication.php(142): CWebApplication->runController('site/page')
+#3 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\topofficial\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/topofficial/index.php?r=site/page&view=about
+HTTP_REFERER=http://localhost/topofficial/index.php?r=site/index
+---
+2012/11/09 23:36:26 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "page".' in C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\web\CController.php:484
+Stack trace:
+#0 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\web\CController.php(271): CController->missingAction('page')
+#1 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\web\CWebApplication.php(283): CController->run('page')
+#2 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\web\CWebApplication.php(142): CWebApplication->runController('site/page')
+#3 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\topofficial\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/topofficial/index.php?r=site/page&view=about
+HTTP_REFERER=http://localhost/topofficial/index.php?r=site/index
+---
+2012/11/09 23:36:26 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "page".' in C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\web\CController.php:484
+Stack trace:
+#0 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\web\CController.php(271): CController->missingAction('page')
+#1 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\web\CWebApplication.php(283): CController->run('page')
+#2 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\web\CWebApplication.php(142): CWebApplication->runController('site/page')
+#3 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\topofficial\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/topofficial/index.php?r=site/page&view=about
+HTTP_REFERER=http://localhost/topofficial/index.php?r=site/index
+---
+2012/11/10 01:54:03 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "gi".' in C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\web\CWebApplication.php:287
+Stack trace:
+#0 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\web\CWebApplication.php(142): CWebApplication->runController('gi')
+#1 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\topofficial\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/topofficial/index.php?r=gi
+---
