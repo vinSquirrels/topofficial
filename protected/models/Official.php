@@ -24,75 +24,75 @@
 class Official extends CActiveRecord
 {
 	/**
-	 * Returns the static model of the specified AR class.
-	 * @param string $className active record class name.
-	 * @return Official the static model class
-	 */
-	public static function model($className=__CLASS__)
-	{
-		return parent::model($className);
-	}
+    * Returns the static model of the specified AR class.
+    * @param string $className active record class name.
+    * @return Official the static model class
+    */
+    public static function model($className=__CLASS__)
+    {
+       return parent::model($className);
+    }
 
-	/**
-	 * @return string the associated database table name
-	 */
-	public function tableName()
-	{
-		return 'official';
-	}
+    /**
+    * @return string the associated database table name
+    */
+    public function tableName()
+    {
+       return 'official';
+    }
 
-	/**
-	 * @return array validation rules for model attributes.
-	 */
-	public function rules()
-	{
-		// NOTE: you should only define rules for those attributes that
-		// will receive user inputs.
-		return array(
-			array('FirstName, LastName, MiddleName, CityID', 'required'),
-			array('CityID, RegionID', 'numerical', 'integerOnly'=>true),
-			array('FirstName, LastName, MiddleName, ImageFileName', 'length', 'max'=>45),
-			array('Post, Departament', 'length', 'max'=>255),
-			array('Description', 'safe'),
-			// The following rule is used by search().
-			// Please remove those attributes that should not be searched.
-			array('OfficialID, FirstName, LastName, MiddleName, ImageFileName, Post, Description, Departament, CityID, RegionID', 'safe', 'on'=>'search'),
-		);
-	}
+    /**
+    * @return array validation rules for model attributes.
+    */
+    public function rules()
+    {
+       // NOTE: you should only define rules for those attributes that
+       // will receive user inputs.
+       return array(
+           array('FirstName, LastName, MiddleName, CityID', 'required'),
+           array('CityID, RegionID', 'numerical', 'integerOnly'=>true),
+           array('FirstName, LastName, MiddleName, ImageFileName', 'length', 'max'=>45),
+           array('Post, Departament', 'length', 'max'=>255),
+           array('Description', 'safe'),
+           // The following rule is used by search().
+           // Please remove those attributes that should not be searched.
+           array('OfficialID, FirstName, LastName, MiddleName, ImageFileName, Post, Description, Departament, CityID, RegionID', 'safe', 'on'=>'search'),
+       );
+    }
 
-	/**
-	 * @return array relational rules.
-	 */
-	public function relations()
-	{
-		// NOTE: you may need to adjust the relation name and the related
-		// class name for the relations automatically generated below.
-		return array(
-			'declarations' => array(self::HAS_MANY, 'Declaration', 'OfficialID'),
-			'estimates' => array(self::HAS_MANY, 'Estimate', 'OfficialID'),
-			'region' => array(self::BELONGS_TO, 'Region', 'RegionID'),
-			'city' => array(self::BELONGS_TO, 'City', 'CityID'),
-		);
-	}
+    /**
+    * @return array relational rules.
+    */
+    public function relations()
+    {
+       // NOTE: you may need to adjust the relation name and the related
+       // class name for the relations automatically generated below.
+       return array(
+               'declarations' => array(self::HAS_MANY, 'Declaration', 'OfficialID'),
+               'reviews' => array(self::HAS_MANY, 'Review', 'OfficialID'),
+               'region' => array(self::BELONGS_TO, 'Region', 'RegionID'),
+               'city' => array(self::BELONGS_TO, 'City', 'CityID'),
+       );
+    }
 
-	/**
-	 * @return array customized attribute labels (name=>label)
-	 */
-	public function attributeLabels()
-	{
-		return array(
-			'OfficialID' => 'Official',
-			'FirstName' => 'First Name',
-			'LastName' => 'Last Name',
-			'MiddleName' => 'Middle Name',
-			'ImageFileName' => 'Image File Name',
-			'Post' => 'Post',
-			'Description' => 'Description',
-			'Departament' => 'Departament',
-			'CityID' => 'City',
-			'RegionID' => 'Region',
-		);
-	}
+    /**
+    * @return array customized attribute labels (name=>label)
+    */
+    public function attributeLabels()
+    {
+       return array(
+           'OfficialID' => 'Official',
+           'FirstName' => 'First Name',
+           'LastName' => 'Last Name',
+           'MiddleName' => 'Middle Name',
+           'ImageFileName' => 'Image File Name',
+           'Post' => 'Post',
+           'Description' => 'Description',
+           'Departament' => 'Departament',
+           'CityID' => 'City',
+           'RegionID' => 'Region',
+       );
+    }
 
     /**
      * Retrieves a list of models based on the current search/filter conditions.
@@ -100,25 +100,25 @@ class Official extends CActiveRecord
      */
     public function search()
     {
-            // Warning: Please modify the following code to remove attributes that
-            // should not be searched.
+        // Warning: Please modify the following code to remove attributes that
+        // should not be searched.
 
-            $criteria=new CDbCriteria;
+        $criteria=new CDbCriteria;
 
-            $criteria->compare('OfficialID',$this->OfficialID);
-            $criteria->compare('FirstName',$this->FirstName,true);
-            $criteria->compare('LastName',$this->LastName,true);
-            $criteria->compare('MiddleName',$this->MiddleName,true);
-            $criteria->compare('ImageFileName',$this->ImageFileName,true);
-            $criteria->compare('Post',$this->Post,true);
-            $criteria->compare('Description',$this->Description,true);
-            $criteria->compare('Departament',$this->Departament,true);
-            $criteria->compare('CityID',$this->CityID);
-            $criteria->compare('RegionID',$this->RegionID);
+        $criteria->compare('OfficialID',$this->OfficialID);
+        $criteria->compare('FirstName',$this->FirstName,true);
+        $criteria->compare('LastName',$this->LastName,true);
+        $criteria->compare('MiddleName',$this->MiddleName,true);
+        $criteria->compare('ImageFileName',$this->ImageFileName,true);
+        $criteria->compare('Post',$this->Post,true);
+        $criteria->compare('Description',$this->Description,true);
+        $criteria->compare('Departament',$this->Departament,true);
+        $criteria->compare('CityID',$this->CityID);
+        $criteria->compare('RegionID',$this->RegionID);
 
-            return new CActiveDataProvider($this, array(
-                    'criteria'=>$criteria,
-            ));
+        return new CActiveDataProvider($this, array(
+            'criteria'=>$criteria,
+        ));
     }
         
     /**
@@ -129,17 +129,19 @@ class Official extends CActiveRecord
     public function getCriteriaEstimates() {
         $sql = '
             SELECT 
-                estimate.CriteriaTypeID,
+                    estimate.CriteriaTypeID,
                     sum( estimate.Value ) / count(*) as Value,
                     topofficial.criteriatype.Name
             FROM
-                topofficial.estimate
+                    topofficial.estimate
             LEFT JOIN
-                    topofficial.criteriatype ON criteriatype.CriteriaTypeID = estimate.CriteriaTypeID
+                    topofficial.review ON topofficial.review.ReviewID = estimate.ReviewID
+            LEFT JOIN
+                    topofficial.criteriatype ON criteriatype.CriteriaTypeID = topofficial.estimate.CriteriaTypeID
             WHERE
-                estimate.OfficialID = :officialID
+                    topofficial.review.OfficialID = :officialID
             GROUP BY
-                estimate.CriteriaTypeID, topofficial.criteriatype.Name
+                    estimate.CriteriaTypeID, topofficial.criteriatype.Name
         ';
         
         $command = Yii::app()->db->createCommand( $sql );
@@ -177,9 +179,11 @@ class Official extends CActiveRecord
             FROM
                 topofficial.estimate
             LEFT JOIN
+                    topofficial.review ON topofficial.review.ReviewID = estimate.ReviewID
+            LEFT JOIN
                     topofficial.criteriatype ON criteriatype.CriteriaTypeID = estimate.CriteriaTypeID
             WHERE
-                estimate.OfficialID = :officialID
+               topofficial.review.OfficialID = :officialID
             LIMIT 1
         ';
 
@@ -193,4 +197,29 @@ class Official extends CActiveRecord
         
         return $rankValue;
     }
+    
+    
+    /**
+     *  Определить путь к изображению чиновника
+     * 
+     * @return string
+     */
+    public function getImage() {
+        if( !empty( $this->ImageFileName ) ) {
+            return Yii::app()->params[ 'default' ][ 'images' ] . '/' . $this->ImageFileName;
+        }
+        else {
+            return 'http://yii-booster.clevertech.biz/images/placeholder260x180.gif';
+        }
+    }
+    
+    
+    public function getList( $filter ) {
+        $criteria = new CDbCriteria();
+        $officials = $this->findAll( $criteria );
+        
+        return $officials;
+    }
+    
+    
 }
