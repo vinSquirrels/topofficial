@@ -50,3 +50,63 @@ Stack trace:
 #3 {main}
 REQUEST_URI=/topofficial/index.php?r=gi
 ---
+2012/11/10 13:27:21 [error] [php] print_r() expects at least 1 parameter, 0 given (C:\xampp\htdocs\topofficial\protected\controllers\OfficialController.php:18)
+Stack trace:
+#0 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\web\CController.php(309): CInlineAction->runWithParams()
+#1 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\web\CController.php(287): OfficialController->runAction()
+#2 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\web\CController.php(266): OfficialController->runActionWithFilters()
+#3 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\web\CWebApplication.php(283): OfficialController->run()
+#4 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#5 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#6 C:\xampp\htdocs\topofficial\index.php(13): CWebApplication->run()
+REQUEST_URI=/topofficial/index.php/official/view/id/1
+in C:\xampp\htdocs\topofficial\protected\controllers\OfficialController.php (18)
+in C:\xampp\htdocs\topofficial\index.php (13)
+2012/11/10 14:19:56 [error] [php] array_merge() [<a href='function.array-merge'>function.array-merge</a>]: Argument #2 is not an array (C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\db\CDbCommand.php:461)
+Stack trace:
+#0 C:\xampp\htdocs\topofficial\protected\models\Official.php(182): CDbCommand->queryScalar()
+#1 C:\xampp\htdocs\topofficial\protected\controllers\OfficialController.php(7): Official->getRank()
+#2 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\web\actions\CInlineAction.php(50): OfficialController->actionView()
+#3 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\web\CController.php(309): CInlineAction->runWithParams()
+#4 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\web\CController.php(287): OfficialController->runAction()
+#5 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\web\CController.php(266): OfficialController->runActionWithFilters()
+#6 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\web\CWebApplication.php(283): OfficialController->run()
+#7 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#8 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#9 C:\xampp\htdocs\topofficial\index.php(13): CWebApplication->run()
+REQUEST_URI=/topofficial/index.php/official/view/id/1
+in C:\xampp\htdocs\topofficial\protected\models\Official.php (182)
+in C:\xampp\htdocs\topofficial\protected\controllers\OfficialController.php (7)
+in C:\xampp\htdocs\topofficial\index.php (13)
+2012/11/10 14:20:01 [error] [php] array_merge() [<a href='function.array-merge'>function.array-merge</a>]: Argument #2 is not an array (C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\db\CDbCommand.php:461)
+Stack trace:
+#0 C:\xampp\htdocs\topofficial\protected\models\Official.php(182): CDbCommand->queryScalar()
+#1 C:\xampp\htdocs\topofficial\protected\controllers\OfficialController.php(7): Official->getRank()
+#2 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\web\actions\CInlineAction.php(50): OfficialController->actionView()
+#3 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\web\CController.php(309): CInlineAction->runWithParams()
+#4 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\web\CController.php(287): OfficialController->runAction()
+#5 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\web\CController.php(266): OfficialController->runActionWithFilters()
+#6 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\web\CWebApplication.php(283): OfficialController->run()
+#7 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#8 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#9 C:\xampp\htdocs\topofficial\index.php(13): CWebApplication->run()
+REQUEST_URI=/topofficial/index.php/official/view/id/1
+in C:\xampp\htdocs\topofficial\protected\models\Official.php (182)
+in C:\xampp\htdocs\topofficial\protected\controllers\OfficialController.php (7)
+in C:\xampp\htdocs\topofficial\index.php (13)
+2012/11/10 14:21:04 [error] [php] array_merge() [<a href='function.array-merge'>function.array-merge</a>]: Argument #2 is not an array (C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\db\CDbCommand.php:461)
+Stack trace:
+#0 C:\xampp\htdocs\topofficial\protected\models\Official.php(182): CDbCommand->queryScalar()
+#1 C:\xampp\htdocs\topofficial\protected\controllers\OfficialController.php(7): Official->getRank()
+#2 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\web\actions\CInlineAction.php(50): OfficialController->actionView()
+#3 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\web\CController.php(309): CInlineAction->runWithParams()
+#4 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\web\CController.php(287): OfficialController->runAction()
+#5 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\web\CController.php(266): OfficialController->runActionWithFilters()
+#6 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\web\CWebApplication.php(283): OfficialController->run()
+#7 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#8 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#9 C:\xampp\htdocs\topofficial\index.php(13): CWebApplication->run()
+REQUEST_URI=/topofficial/index.php/official/view/id/1
+in C:\xampp\htdocs\topofficial\protected\models\Official.php (182)
+in C:\xampp\htdocs\topofficial\protected\controllers\OfficialController.php (7)
+in C:\xampp\htdocs\topofficial\index.php (13)
