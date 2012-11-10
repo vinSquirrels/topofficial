@@ -178,3 +178,144 @@ Stack trace:
 #11 {main}
 REQUEST_URI=/topofficial/index.php/official/view/id/1
 ---
+2012/11/10 16:21:07 [error] [php] A non well formed numeric value encountered (C:\xampp\htdocs\topofficial\protected\views\official\view.php:78)
+Stack trace:
+#0 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\web\CBaseController.php(96): OfficialController->renderInternal()
+#1 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\web\CController.php(870): OfficialController->renderFile()
+#2 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\web\CController.php(783): OfficialController->renderPartial()
+#3 C:\xampp\htdocs\topofficial\protected\controllers\OfficialController.php(19): OfficialController->render()
+#4 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\web\actions\CInlineAction.php(50): OfficialController->actionView()
+#5 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\web\CController.php(309): CInlineAction->runWithParams()
+#6 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\web\CController.php(287): OfficialController->runAction()
+#7 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\web\CController.php(266): OfficialController->runActionWithFilters()
+#8 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\web\CWebApplication.php(283): OfficialController->run()
+#9 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#10 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 C:\xampp\htdocs\topofficial\index.php(13): CWebApplication->run()
+REQUEST_URI=/topofficial/index.php/official/view/id/1
+in C:\xampp\htdocs\topofficial\protected\views\official\view.php (78)
+in C:\xampp\htdocs\topofficial\protected\controllers\OfficialController.php (19)
+in C:\xampp\htdocs\topofficial\index.php (13)
+2012/11/10 16:21:36 [error] [php] A non well formed numeric value encountered (C:\xampp\htdocs\topofficial\protected\views\official\view.php:78)
+Stack trace:
+#0 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\web\CBaseController.php(96): OfficialController->renderInternal()
+#1 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\web\CController.php(870): OfficialController->renderFile()
+#2 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\web\CController.php(783): OfficialController->renderPartial()
+#3 C:\xampp\htdocs\topofficial\protected\controllers\OfficialController.php(19): OfficialController->render()
+#4 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\web\actions\CInlineAction.php(50): OfficialController->actionView()
+#5 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\web\CController.php(309): CInlineAction->runWithParams()
+#6 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\web\CController.php(287): OfficialController->runAction()
+#7 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\web\CController.php(266): OfficialController->runActionWithFilters()
+#8 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\web\CWebApplication.php(283): OfficialController->run()
+#9 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#10 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 C:\xampp\htdocs\topofficial\index.php(13): CWebApplication->run()
+REQUEST_URI=/topofficial/index.php/official/view/id/1
+in C:\xampp\htdocs\topofficial\protected\views\official\view.php (78)
+in C:\xampp\htdocs\topofficial\protected\controllers\OfficialController.php (19)
+in C:\xampp\htdocs\topofficial\index.php (13)
+2012/11/10 16:22:45 [error] [exception.CException] exception 'CException' with message 'Property "Review.Description" is not defined.' in C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\base\CComponent.php:131
+Stack trace:
+#0 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\db\ar\CActiveRecord.php(144): CComponent->__get('Description')
+#1 C:\xampp\htdocs\topofficial\protected\views\official\view.php(79): CActiveRecord->__get('Description')
+#2 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\web\CBaseController.php(127): require('C:\xampp\htdocs...')
+#3 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\web\CBaseController.php(96): CBaseController->renderInternal('C:\xampp\htdocs...', Array, true)
+#4 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\web\CController.php(870): CBaseController->renderFile('C:\xampp\htdocs...', Array, true)
+#5 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\web\CController.php(783): CController->renderPartial('view', Array, true)
+#6 C:\xampp\htdocs\topofficial\protected\controllers\OfficialController.php(19): CController->render('view', Array)
+#7 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\web\actions\CInlineAction.php(50): OfficialController->actionView()
+#8 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#9 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#10 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\web\CWebApplication.php(283): CController->run('view')
+#12 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\web\CWebApplication.php(142): CWebApplication->runController('official/view/i...')
+#13 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#14 C:\xampp\htdocs\topofficial\index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/topofficial/index.php/official/view/id/1
+---
+2012/11/10 16:25:09 [error] [exception.CException] exception 'CException' with message 'Property "Review.Description" is not defined.' in C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\base\CComponent.php:131
+Stack trace:
+#0 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\db\ar\CActiveRecord.php(144): CComponent->__get('Description')
+#1 C:\xampp\htdocs\topofficial\protected\views\official\view.php(79): CActiveRecord->__get('Description')
+#2 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\web\CBaseController.php(127): require('C:\xampp\htdocs...')
+#3 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\web\CBaseController.php(96): CBaseController->renderInternal('C:\xampp\htdocs...', Array, true)
+#4 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\web\CController.php(870): CBaseController->renderFile('C:\xampp\htdocs...', Array, true)
+#5 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\web\CController.php(783): CController->renderPartial('view', Array, true)
+#6 C:\xampp\htdocs\topofficial\protected\controllers\OfficialController.php(19): CController->render('view', Array)
+#7 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\web\actions\CInlineAction.php(50): OfficialController->actionView()
+#8 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#9 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#10 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\web\CWebApplication.php(283): CController->run('view')
+#12 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\web\CWebApplication.php(142): CWebApplication->runController('official/view/i...')
+#13 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#14 C:\xampp\htdocs\topofficial\index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/topofficial/index.php/official/view/id/1
+---
+2012/11/10 16:52:12 [error] [exception.CException] exception 'CException' with message 'Official and its behaviors do not have a method or closure named "getImageUrl".' in C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\base\CComponent.php:266
+Stack trace:
+#0 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\db\ar\CActiveRecord.php(226): CComponent->__call('getImageUrl', Array)
+#1 C:\xampp\htdocs\topofficial\protected\views\official\view.php(4): CActiveRecord->__call('getImageUrl', Array)
+#2 C:\xampp\htdocs\topofficial\protected\views\official\view.php(4): Official->getImageUrl()
+#3 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\web\CBaseController.php(127): require('C:\xampp\htdocs...')
+#4 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\web\CBaseController.php(96): CBaseController->renderInternal('C:\xampp\htdocs...', Array, true)
+#5 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\web\CController.php(870): CBaseController->renderFile('C:\xampp\htdocs...', Array, true)
+#6 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\web\CController.php(783): CController->renderPartial('view', Array, true)
+#7 C:\xampp\htdocs\topofficial\protected\controllers\OfficialController.php(19): CController->render('view', Array)
+#8 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\web\actions\CInlineAction.php(50): OfficialController->actionView()
+#9 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#10 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#11 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\web\CWebApplication.php(283): CController->run('view')
+#13 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\web\CWebApplication.php(142): CWebApplication->runController('official/view/i...')
+#14 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#15 C:\xampp\htdocs\topofficial\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/topofficial/index.php/official/view/id/1
+---
+2012/11/10 17:38:57 [error] [exception.CException] exception 'CException' with message 'OfficialController cannot find the requested view "index".' in C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\web\CController.php:879
+Stack trace:
+#0 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\web\CController.php(783): CController->renderPartial('index', Array, true)
+#1 C:\xampp\htdocs\topofficial\protected\controllers\OfficialController.php(7): CController->render('index', Array)
+#2 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\web\actions\CInlineAction.php(50): OfficialController->actionGetTop()
+#3 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#4 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#5 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\web\CWebApplication.php(283): CController->run('getTop')
+#7 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\web\CWebApplication.php(142): CWebApplication->runController('official/getTop')
+#8 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#9 C:\xampp\htdocs\topofficial\index.php(13): CApplication->run()
+#10 {main}
+REQUEST_URI=/topofficial/index.php/official/getTop
+---
+2012/11/10 17:40:19 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "getTop".' in C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\web\CController.php:484
+Stack trace:
+#0 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\web\CController.php(271): CController->missingAction('getTop')
+#1 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\web\CWebApplication.php(283): CController->run('getTop')
+#2 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\web\CWebApplication.php(142): CWebApplication->runController('official/getTop')
+#3 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\topofficial\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/topofficial/index.php/official/getTop
+---
+2012/11/10 20:02:54 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "view/id".' in C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\web\CWebApplication.php:287
+Stack trace:
+#0 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\web\CWebApplication.php(142): CWebApplication->runController('view/id')
+#1 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\topofficial\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/topofficial/index.php/view/id/1
+---
+2012/11/10 21:06:29 [error] [php] Undefined variable: region (C:\xampp\htdocs\topofficial\protected\controllers\SiteController.php:512)
+Stack trace:
+#0 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\web\CController.php(287): SiteController->runAction()
+#1 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\web\CController.php(266): SiteController->runActionWithFilters()
+#2 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\web\CWebApplication.php(283): SiteController->run()
+#3 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#4 C:\xampp\htdocs\topofficial\lib\yii-1.1.12\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#5 C:\xampp\htdocs\topofficial\index.php(13): CWebApplication->run()
+REQUEST_URI=/topofficial/
+in C:\xampp\htdocs\topofficial\protected\controllers\SiteController.php (512)
+in C:\xampp\htdocs\topofficial\index.php (13)

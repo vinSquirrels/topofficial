@@ -45,7 +45,7 @@ return array(
 				'<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
 				'<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
 			),
-                       // 'showScriptName'=>false,
+                        'showScriptName' => false,
 		),
 		
 //		'db'=>array(
@@ -86,7 +86,9 @@ return array(
 	// using Yii::app()->params['paramName']
 	'params'=>array(
             'default' => array(
-                'images' => 'images'
+                'images' => 'images',
+                'declarations' => 'declarations',
+                'topCount' => '15'
             )
 	),
 );

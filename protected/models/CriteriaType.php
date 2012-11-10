@@ -42,7 +42,7 @@ class CriteriaType extends CActiveRecord
             array('Name', 'length', 'max'=>255),
             // The following rule is used by search().
             // Please remove those attributes that should not be searched.
-            array('CriteriaTypeID, Name, IsPositive', 'safe', 'on'=>'search'),
+            array('CriteriaTypeID, Name, IsPositive, IconFileName', 'safe', 'on'=>'search'),
         );
     }
 
@@ -66,7 +66,8 @@ class CriteriaType extends CActiveRecord
         return array(
             'CriteriaTypeID' => 'Criteria Type',
             'Name' => 'Name',
-            'IsPositive' => 'IsPositive'
+            'IsPositive' => 'IsPositive',
+            'IconFileName' => 'IconFileName'
         );
     }
 
@@ -84,6 +85,7 @@ class CriteriaType extends CActiveRecord
         $criteria->compare('CriteriaTypeID',$this->CriteriaTypeID);
         $criteria->compare('Name',$this->Name,true);
         $criteria->compare('Name',$this->IsPositive);
+        $criteria->compare('IconFileName',$this->IconFileName);
 
         return new CActiveDataProvider($this, array(
             'criteria'=>$criteria,

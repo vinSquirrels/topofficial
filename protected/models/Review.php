@@ -44,7 +44,7 @@ class Review extends CActiveRecord
 			array('IpAddress, AuthorName, AuthorEmail', 'length', 'max'=>45),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('ReviewID, IpAddress, Timestamp, OfficialID, AuthorName, AuthorEmail', 'safe', 'on'=>'search'),
+			array('ReviewID, IpAddress, Timestamp, OfficialID, AuthorName, AuthorEmail, Text', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -71,29 +71,52 @@ class Review extends CActiveRecord
 			'OfficialID' => 'Official',
 			'AuthorName' => 'Author Name',
 			'AuthorEmail' => 'Author Email',
+                        'Text' => 'Text'
 		);
 	}
 
-	/**
-	 * Retrieves a list of models based on the current search/filter conditions.
-	 * @return CActiveDataProvider the data provider that can return the models based on the search/filter conditions.
-	 */
-	public function search()
-	{
-		// Warning: Please modify the following code to remove attributes that
-		// should not be searched.
+        /**
+         * Retrieves a list of models based on the current search/filter conditions.
+         * @return CActiveDataProvider the data provider that can return the models based on the search/filter conditions.
+         */
+        public function search()
+        {
+            // Warning: Please modify the following code to remove attributes that
+            // should not be searched.
 
-		$criteria=new CDbCriteria;
+            $criteria=new CDbCriteria;
 
-		$criteria->compare('ReviewID',$this->ReviewID);
-		$criteria->compare('IpAddress',$this->IpAddress,true);
-		$criteria->compare('Timestamp',$this->Timestamp,true);
-		$criteria->compare('OfficialID',$this->OfficialID);
-		$criteria->compare('AuthorName',$this->AuthorName,true);
-		$criteria->compare('AuthorEmail',$this->AuthorEmail,true);
+            $criteria->compare('ReviewID',$this->ReviewID);
+            $criteria->compare('IpAddress',$this->IpAddress,true);
+            $criteria->compare('Timestamp',$this->Timestamp,true);
+            $criteria->compare('OfficialID',$this->OfficialID);
+            $criteria->compare('AuthorName',$this->AuthorName,true);
+            $criteria->compare('AuthorEmail',$this->AuthorEmail,true);
+            $criteria->compare('Text',$this->Text,true);
 
-		return new CActiveDataProvider($this, array(
-			'criteria'=>$criteria,
-		));
-	}
+            return new CActiveDataProvider($this, array(
+                    'criteria'=>$criteria,
+            ));
+        }
+
+
+        public function addEstimates( $estimates ) {
+            $transaction = Yii::app()->db->beginTransaction();
+            try {
+                foreach( $estimates as $estimate ) {
+                    $newEstimate = new Estimate();
+                    $newEstimate->attributes = $estimate;
+                    
+                    if( ! $newEstimate->save( true ) ) {
+                        throw new Exception( Yii::t( 'application', 'Error add estimate' ) );
+                    }
+                }
+                
+                $transaction->commit();
+            }
+            catch( Exception $exception ) {
+                $transaction->rollBack();
+                throw $exception;
+            }
+        }
 }

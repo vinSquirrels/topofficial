@@ -23,6 +23,8 @@
  */
 class Official extends CActiveRecord
 {
+    public $rank = 0;
+    
 	/**
     * Returns the static model of the specified AR class.
     * @param string $className active record class name.
@@ -56,7 +58,7 @@ class Official extends CActiveRecord
            array('Description', 'safe'),
            // The following rule is used by search().
            // Please remove those attributes that should not be searched.
-           array('OfficialID, FirstName, LastName, MiddleName, ImageFileName, Post, Description, Departament, CityID, RegionID', 'safe', 'on'=>'search'),
+           array('OfficialID, FirstName, LastName, MiddleName, ImageFileName, Post, Description, Departament, CityID, RegionID, DistrictID', 'safe', 'on'=>'search'),
        );
     }
 
@@ -72,6 +74,7 @@ class Official extends CActiveRecord
                'reviews' => array(self::HAS_MANY, 'Review', 'OfficialID'),
                'region' => array(self::BELONGS_TO, 'Region', 'RegionID'),
                'city' => array(self::BELONGS_TO, 'City', 'CityID'),
+               'district' => array(self::BELONGS_TO, 'District', 'DistrictID'), 
        );
     }
 
@@ -131,7 +134,8 @@ class Official extends CActiveRecord
             SELECT 
                     estimate.CriteriaTypeID,
                     sum( estimate.Value ) / count(*) as Value,
-                    topofficial.criteriatype.Name
+                    topofficial.criteriatype.Name,
+                    topofficial.criteriatype.IconFileName
             FROM
                     topofficial.estimate
             LEFT JOIN
@@ -141,7 +145,7 @@ class Official extends CActiveRecord
             WHERE
                     topofficial.review.OfficialID = :officialID
             GROUP BY
-                    estimate.CriteriaTypeID, topofficial.criteriatype.Name
+                    estimate.CriteriaTypeID, topofficial.criteriatype.Name, topofficial.criteriatype.IconFileName
         ';
         
         $command = Yii::app()->db->createCommand( $sql );
@@ -151,6 +155,25 @@ class Official extends CActiveRecord
                 ':officialID' => $this->OfficialID,
             )
         );
+        
+        // TODO 
+        $usedCriteriaTypesID = array();
+        foreach( $criteriaValues as $criteriaValue ) {
+            $usedCriteriaTypesID[] = $criteriaValue[ 'CriteriaTypeID' ];
+        }
+        
+        foreach( CriteriaType::model()->findAll() as $criteriaType ) {
+            if(in_array( $criteriaType->CriteriaTypeID, $usedCriteriaTypesID ) ) {
+                continue;
+            }
+            
+            $criteriaValues[] = array(
+                'CriteriaTypeID' => $criteriaType->CriteriaTypeID,
+                'Name' => $criteriaType->Name,
+                'Value' => 0,
+                'IconFileName' => $criteriaType->IconFileName
+            );
+        }
         
         
         return $criteriaValues;
@@ -175,7 +198,7 @@ class Official extends CActiveRecord
                                             (-estimate.Value)
                             END
 
-                    ) / count(*) as Value
+                    )
             FROM
                 topofficial.estimate
             LEFT JOIN
@@ -195,9 +218,65 @@ class Official extends CActiveRecord
         );
         
         
-        return $rankValue;
+        return (integer)$rankValue;
     }
     
+    
+    /**
+     * Максимальный рейтинг по чиновникам
+     * 
+     * @return integer
+     */
+    public function getMaxRank() {
+        $sql = '
+            SELECT 
+            sum(
+                CASE
+                    WHEN
+                        topofficial.criteriatype.IsPositive
+                    THEN
+                        estimate.Value
+                    ELSE
+                        (-estimate.Value)
+                END
+            ) AS Rank, topofficial.review.OfficialID
+            FROM
+                topofficial.estimate
+            LEFT JOIN
+                topofficial.review ON topofficial.review.ReviewID = estimate.ReviewID
+            LEFT JOIN
+                topofficial.criteriatype ON criteriatype.CriteriaTypeID = estimate.CriteriaTypeID
+            GROUP BY 
+                topofficial.review.OfficialID
+            ORDER BY Rank
+
+            LIMIT 1
+        ';
+
+        $command = Yii::app()->db->createCommand( $sql );
+        $rankValue = $command->queryScalar();
+        
+        
+        return (integer)$rankValue;
+    }
+    
+    
+    /**
+     * Рейтинг чиновника относительно остальных чиновников
+     * 
+     * @return int
+     */
+    public function getRelativlyRank() {
+        $rank = $this->getRank();
+        $maxRank = $this->getMaxRank();
+        
+        if( $rank < 0  ) {
+            return 0;
+        }
+        
+        
+        return floor( ( $rank / $maxRank ) * 100 );
+    }
     
     /**
      *  Определить путь к изображению чиновника
@@ -206,20 +285,154 @@ class Official extends CActiveRecord
      */
     public function getImage() {
         if( !empty( $this->ImageFileName ) ) {
-            return Yii::app()->params[ 'default' ][ 'images' ] . '/' . $this->ImageFileName;
+            return Yii::app()->request->baseUrl . '/' . Yii::app()->params[ 'default' ][ 'images' ] . '/' . $this->ImageFileName;
         }
         else {
             return 'http://yii-booster.clevertech.biz/images/placeholder260x180.gif';
         }
     }
     
+    public function getDeclaration() {
+        $declaration = Declaration::model()->find(
+            'OfficialID = :officialID',
+            array(
+                ':officialID' => $this->OfficialID
+            )
+        );
+        
+        if( !empty( $declaration ) && !empty( $declaration->FileName ) ) {
+            return Yii::app()->request->baseUrl . '/' . Yii::app()->params[ 'default' ][ 'declarations' ] . '/' . $declaration->FileName;
+        }
+        else {
+            return '#';
+        }
+    }   
+    
     
     public function getList( $filter ) {
-        $criteria = new CDbCriteria();
+        $criteria = new CDbCriteria( array() );
+        
+        if( isset( $filter[ 'CriteriaTypeID' ] ) && !empty( $filter[ 'CriteriaTypeID' ] ) ) {
+            $criteria->order = '
+                ( 
+                    SELECT
+                        sum( topofficial.estimate.Value )
+                    FROM
+                        topofficial.estimate
+                    LEFT JOIN
+                        topofficial.criteriatype ON topofficial.criteriatype.CriteriaTypeID = topofficial.estimate.CriteriaTypeID
+                    LEFT JOIN
+                        topofficial.review ON topofficial.review.ReviewID = topofficial.estimate.ReviewID
+                    WHERE
+                        topofficial.criteriatype.CriteriaTypeID = :criteriaTypeID AND
+                        topofficial.review.OfficialID = t.OfficialID
+                 ) DESC
+            ';
+            
+            $criteria->params[ ':criteriaTypeID' ] = $filter[ 'CriteriaTypeID' ];
+        }
+        
+        // region
+        if( isset( $filter[ 'RegionID' ] ) && !empty( $filter[ 'RegionID' ] ) ) {
+            if( !empty(  $criteria->condition ) ) {
+                $criteria->condition .= ' AND ';
+            }
+            
+            $criteria->condition .= ' RegionID = :regionID ';
+            $criteria->params[ ':regionID' ] = (integer) $filter[ 'RegionID' ];
+        }
+        
+        // city
+        if( isset( $filter[ 'CityID' ] ) && !empty( $filter[ 'CityID' ] ) ) {
+            if( !empty(  $criteria->condition ) ) {
+                $criteria->condition .= ' AND ';
+            }
+            
+            $criteria->condition .= ' CityID = :cityID ';
+            $criteria->params[ ':cityID' ] = (integer) $filter[ 'CityID' ];
+        }
+        
+        // district
+        if( isset( $filter[ 'DistrictID' ] ) && !empty( $filter[ 'DistrictID' ] ) ) {
+            if( !empty(  $criteria->condition ) ) {
+                $criteria->condition .= ' AND ';
+            }
+            
+            $criteria->condition .= ' DistrictID = :districtID ';
+            $criteria->params[ ':districtID' ] = (integer) $filter[ 'DistrictID' ];
+        }
+        
         $officials = $this->findAll( $criteria );
         
         return $officials;
     }
     
     
+    /**
+     * Получить топ чиновников по критериям
+     * 
+     * @return array
+     */
+    public function getTop() {
+        $criteria = new CDbCriteria( array(
+            'select' => '
+                *,
+                (
+                    SELECT 
+                            sum(
+                                    CASE 
+                                            WHEN
+                                                    topofficial.criteriatype.IsPositive
+                                            THEN
+                                                    estimate.Value
+                                            ELSE
+                                                    (-estimate.Value)
+                                    END
+
+                            ) / count(*) as Value
+                    FROM
+                        topofficial.estimate
+                    LEFT JOIN
+                            topofficial.review ON topofficial.review.ReviewID = estimate.ReviewID
+                    LEFT JOIN
+                            topofficial.criteriatype ON criteriatype.CriteriaTypeID = estimate.CriteriaTypeID
+                    WHERE
+                       topofficial.review.OfficialID = t.OfficialID
+                    LIMIT 1
+                ) as rank
+            ',
+            'order' => '
+                (
+                    SELECT 
+                            sum(
+                                    CASE 
+                                            WHEN
+                                                    topofficial.criteriatype.IsPositive
+                                            THEN
+                                                    estimate.Value
+                                            ELSE
+                                                    (-estimate.Value)
+                                    END
+
+                            ) / count(*) as Value
+                    FROM
+                        topofficial.estimate
+                    LEFT JOIN
+                            topofficial.review ON topofficial.review.ReviewID = estimate.ReviewID
+                    LEFT JOIN
+                            topofficial.criteriatype ON criteriatype.CriteriaTypeID = estimate.CriteriaTypeID
+                    WHERE
+                       topofficial.review.OfficialID = t.OfficialID
+                    LIMIT 1
+                ) DESC           
+            ',
+            'limit' => Yii::app()->params[ 'default' ][ 'topCount' ]
+        ) );
+        
+        
+        $officials = $this->findAll( $criteria );
+        
+        
+        return $officials;
+    }
 }

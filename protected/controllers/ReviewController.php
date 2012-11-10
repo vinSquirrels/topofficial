@@ -5,10 +5,11 @@ class ReviewController extends Controller {
             $newReview = new Review();
             $newReview->attributes = $_POST[ 'Review' ];
             if( $newReview->save( true ) ) {
-                
+                $newReview->addEstimates( $_POST[ 'Estimates' ] );
+                // TODO
             }
             else {
-                
+                // TODO
             }
         }
         
